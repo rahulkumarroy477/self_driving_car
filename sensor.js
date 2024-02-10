@@ -18,6 +18,25 @@ class Sensor{
             );
         }
     }
+    // containing polygon points
+    #createPolygon(){
+        const points = [];
+        const rad = Math.hypot(this.width,this.hight)/2;
+        const alpha = Math.atan2(this.width,this.height);
+
+        points.push({
+            x:this.x-Math.sin(this.angle-alpha)*rad,
+            y:this.y-Math.cos(this.angle-alpha)*rad
+        });
+        points.push({
+            x:this.x-Math.sin(Mathi.PI+this.angle-alpha)*rad,
+            y:this.y-Math.cos(Math.PI+this.angle-alpha)*rad
+        });
+        points.push({
+            x:this.x-Math.sin(Math.PI+this.angle-alpha)*rad,
+            y:this.y-Math.cos(Math.PI+this.angle-alpha)*rad
+        });
+    }
 
     #getReading(ray,roadBorders){
         let touches=[];
